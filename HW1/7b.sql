@@ -1,0 +1,5 @@
+SELECT event_date, count AS max_open_events
+FROM fgalic.daily_event_activity
+WHERE event_name = 'open_event' AND geo_country = 'Croatia' AND platform = '<all>'
+ORDER BY count DESC
+LIMIT 1;
