@@ -1,0 +1,12 @@
+[project]
+name = "sofascore-data-science-academy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "clickhouse-driver>=0.2.10",
+    "logging>=0.4.9.6",
+    "pandas>=3.0.1",
+    "paramiko>=4.0.0",
+]
