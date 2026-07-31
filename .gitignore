@@ -1,5 +1,34 @@
-.idea
+.idea/
+.vscode/
+.DS_Store
 
 .python-version
-HW2/__pycache__/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.*
+secrets.*
+
+# Downloaded datasets and generated model artifacts
 HW2/data/
+HW4/task2/importer/data/
+*.pickle
+*.pkl
+catboost_info/
+
+# Academy handouts kept locally, outside the public repository
+HW8/*.pdf
+HW9/*.pdf

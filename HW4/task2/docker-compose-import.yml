@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  importer:
+    build:
+      context: ./importer
+    container_name: hw4-march-importer
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      CLICKHOUSE_HOST: host.docker.internal
+      CLICKHOUSE_PORT: "9000"
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-fgalic}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:?Set CLICKHOUSE_PASSWORD in your environment}
+      CLICKHOUSE_DATABASE: ${CLICKHOUSE_DATABASE:-fgalic}
+      CLICKHOUSE_TABLE: l4_dataset
+      SSH_HOST: ${SSH_HOST:?Set SSH_HOST in your environment}
+      SSH_USERNAME: ${SSH_USERNAME:?Set SSH_USERNAME in your environment}
+      SSH_PASSWORD: ${SSH_PASSWORD:?Set SSH_PASSWORD in your environment}
+      REMOTE_DIR_PATH: ${REMOTE_DIR_PATH:?Set REMOTE_DIR_PATH in your environment}
+      CUTOFF_DATE: "20240315"
+      CHUNK_SIZE: "50000"
+      INSERT_CHUNK_SIZE: "100000"
+    volumes:
+      - ./importer/data:/app/data
+    command: ["python", "import_march_2024.py"]
